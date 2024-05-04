@@ -1,27 +1,76 @@
-# Kanban
+# 📊 Maxi Kanban Board
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+This is a sample project of a Kanban board developed using Angular. This board allows users to manage tasks using the Kanban method, which involves visualizing the workflow in columns (To Do, In Progress, and Done).
 
-## Development server
+### 🎒 Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **➕ Task creation**: Users can create new tasks and assign them to different columns on the board.
+- **🧒 Sub task creation**: Create sub tasks related to a parent task.
+- **🔄 Drag and Drop**: Drag and drop functionality allows users to move tasks between columns to reflect their progress.
+- **🕋 Data persistence**: NGRX and ngrx-store-persist are used to to persistently store tasks in the user's browser.
+- **🌙 Dark / Light mode**: Users can switch betweeen dark and light mode.
 
-## Code scaffolding
+### 📸 Screenshots
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+TODO: Add screen shots
 
-## Build
+### 🌎 Live
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+You can visit fernandoox.github.io/maxi-kanban/ to view the demo
 
-## Running unit tests
+### ⚙️ Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone this repository to your local machine using Git:
 
-## Running end-to-end tests
+   ```bash
+   git clone https://github.com/fernandoox/maxi-kanban.git
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Navigate to the project directory:
 
-## Further help
+   ```bash
+   cd maxi-kanban
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Install dependencies using npm:
+
+   ```bash
+   npm install
+   ```
+
+### 🚀 Usage
+
+1. Start the application by running the following command:
+
+   ```bash
+   ng serve
+   ```
+
+2. Open your web browser and navigate to `http://localhost:4200/`.
+
+3. Explore the Kanban board! You can create new tasks, drag them between columns.
+
+### 📦️ Dependencies
+
+The project utilizes the following dependencies and tools:
+
+- **@ngrx/store**: A state management library that implements the Redux pattern in Angular.
+- **@ngrx/store-devtools**: Development tools for debugging and visualizing the state of the Angular application.
+- **angular-cli-ghpages**: A tool for deploying the Angular application to GitHub Pages easily.
+- **Jasmine and Karma**: Testing tools used to write and execute unit tests in the Angular application.
+
+You can refer to the `package.json` file for more details about the specific versions used.
+
+### 🫂 Contribution
+
+If you would like to contribute to this project, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/name-feat`).
+3. Make your changes and commit them (`git commit -am 'feat(scope): description'`).
+4. Push to the branch (`git push origin feature/name-feat`).
+5. Create a new Pull Request following the **PULL_REQUEST_TEMPLATE.md**.
+
+### 📧 Contact
+
+If you have any questions or suggestions, feel free to contact the development team at [luis.fernan.fz@gmail.com](mailto:email@example.com).

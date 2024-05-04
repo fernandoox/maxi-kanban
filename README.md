@@ -16,7 +16,7 @@ TODO: Add screen shots
 
 ### 🌎 Live
 
-You can visit fernandoox.github.io/maxi-kanban/ to view the demo
+You can visit [fernandoox.github.io/maxi-kanban/](https://fernandoox.github.io/maxi-kanban/) to view the demo
 
 ### ⚙️ Installation
 

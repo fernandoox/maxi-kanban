@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <app-toolbar-title></app-toolbar-title>
+    <app-nav-list></app-nav-list>
+    <div class="sidenav__tools">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">visibility_off</mat-icon>
+        Hide sidebar
+      </button>
+      <app-toggle-theme></app-toggle-theme>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="header">
+      @if (!drawer.opened) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav header"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Toggle icon header">menu</mat-icon>
+      </button>
+      }
+      <span>Platform Launch</span>
+      <app-add-task-button></app-add-task-button>
+    </mat-toolbar>
+    <p>Lorem ipsum dolor.</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -3,8 +3,10 @@ import { Task } from '../../interfaces/task.interface';
 import { add } from './tasks.actions';
 
 const initialState: Task = {
-  name: 'First Task',
-  state: 'Pending',
+  title: 'Test',
+  description: 'Description',
+  subTasks: [],
+  status: { title: 'TODO' },
 };
 
 export const tasksReducer = createReducer(

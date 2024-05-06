@@ -5,11 +5,11 @@ import { map } from 'rxjs/internal/operators/map';
 import { shareReplay } from 'rxjs/internal/operators/shareReplay';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss',
+  selector: 'app-main-layout',
+  templateUrl: './main-layout.component.html',
+  styleUrl: './main-layout.component.scss',
 })
-export class NavigationComponent {
+export class MainLayoutComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver

@@ -1,4 +1,9 @@
+import { StatusTask } from './status-task.interface';
+import { SubTask } from './sub-task.interface';
+
 export interface Task {
-  name: string;
-  state: string;
+  title: string;
+  description: string;
+  subTasks: SubTask[];
+  status: StatusTask;
 }

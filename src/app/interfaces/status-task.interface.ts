@@ -1,4 +1,6 @@
+import { StatusColumn } from '../types/status-column.type';
+
 export interface StatusTask {
-  title: 'TODO' | 'DOING' | 'DONE';
+  title: StatusColumn;
   color?: string;
 }

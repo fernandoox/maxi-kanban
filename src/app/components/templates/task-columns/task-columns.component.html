@@ -1,37 +1,70 @@
 <div cdkDropListGroup>
   <div class="task-container">
-    <app-title-column [status]="status"></app-title-column>
-
+    @if(todoTasks$ | async; as todoTasks){
+    <app-title-column
+      [status]="todoTitle"
+      [numberOfTasks]="todoTasks.length"
+    ></app-title-column>
     <div
       cdkDropList
-      [cdkDropListData]="todo"
       class="task-list"
+      [id]="todoTitle.title"
+      [cdkDropListData]="todoTasks"
       (cdkDropListDropped)="drop($event)"
     >
-      @for (item of todo; track item) {
-      <div class="task-box" cdkDrag>
+      @for (item of todoTasks; track item) {
+      <div class="task-box" cdkDrag [cdkDragData]="item">
         <app-task-item></app-task-item>
-        {{ item }}
+        {{ item.title }}
       </div>
       }
     </div>
+    }
   </div>
 
   <div class="task-container">
-    <app-title-column [status]="status2"></app-title-column>
-
+    @if(doingTasks$ | async; as doingTasks){
+    <app-title-column
+      [status]="doingTitle"
+      [numberOfTasks]="doingTasks.length"
+    ></app-title-column>
     <div
       cdkDropList
-      [cdkDropListData]="done"
       class="task-list"
+      [id]="doingTitle.title"
+      [cdkDropListData]="doingTasks"
       (cdkDropListDropped)="drop($event)"
     >
-      @for (item of done; track item) {
-      <div class="task-box" cdkDrag>
+      @for (item of doingTasks; track item) {
+      <div class="task-box" cdkDrag [cdkDragData]="item">
         <app-task-item></app-task-item>
-        {{ item }}
+        {{ item.title }}
       </div>
       }
     </div>
+    }
+  </div>
+
+  <div class="task-container">
+    @if(doneTasks$ | async; as doneTasks){
+    <app-title-column
+      [status]="doneTitle"
+      [numberOfTasks]="doneTasks.length"
+    ></app-title-column>
+    <div
+      cdkDropList
+      class="task-list"
+      [id]="doneTitle.title"
+      [cdkDropListData]="doneTasks"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of doneTasks; track item) {
+      <div class="task-box" cdkDrag [cdkDragData]="item">
+        <app-task-item></app-task-item>
+        {{ item.title }}
+      </div>
+      }
+    </div>
+    }
   </div>
 </div>

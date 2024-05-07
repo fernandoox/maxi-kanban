@@ -7,8 +7,6 @@ import { StatusTask } from '../../../interfaces/status-task.interface';
   styleUrl: './title-column.component.scss',
 })
 export class TitleColumnComponent {
-  @Input() label = '';
-  @Input() color = '';
-
   @Input() status?: StatusTask;
+  @Input() numberOfTasks = 0;
 }

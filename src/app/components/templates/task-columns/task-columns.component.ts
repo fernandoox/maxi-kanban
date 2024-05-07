@@ -1,10 +1,17 @@
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/internal/Observable';
 import { StatusTask } from '../../../interfaces/status-task.interface';
+import { Task } from '../../../interfaces/task.interface';
+import { TaskState } from '../../../state/tasks/tasks-state.interface';
+import { changeOrder, transfer } from '../../../state/tasks/tasks.actions';
+import {
+  doingTasksSelector,
+  doneTasksSelector,
+  todoTasksSelector,
+} from '../../../state/tasks/tasks.selector';
+import { StatusColumn } from '../../../types/status-column.type';
 
 @Component({
   selector: 'app-task-columns',
@@ -12,34 +19,51 @@ import { StatusTask } from '../../../interfaces/status-task.interface';
   styleUrl: './task-columns.component.scss',
 })
 export class TaskColumnsComponent {
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
-  status: StatusTask = {
+  todoTitle: StatusTask = {
     title: 'TODO',
     color: '#37c3e6',
   };
-
-  status2: StatusTask = {
+  doingTitle: StatusTask = {
     title: 'DOING',
     color: '#7B64EE',
   };
-  //#37C3E6 #7B64EE #5ad7a7
+  doneTitle: StatusTask = {
+    title: 'DONE',
+    color: '#5ad7a7',
+  };
 
-  drop(event: CdkDragDrop<string[]>) {
+  todoTasks$!: Observable<Task[]>;
+  doingTasks$!: Observable<Task[]>;
+  doneTasks$!: Observable<Task[]>;
+  constructor(private store: Store<{ tasks: TaskState }>) {
+    this.todoTasks$ = this.store.select(todoTasksSelector);
+    this.doingTasks$ = this.store.select(doingTasksSelector);
+    this.doneTasks$ = this.store.select(doneTasksSelector);
+  }
+
+  drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
+      const statusColumn: StatusColumn = event.container.id as StatusColumn;
+      this.store.dispatch(
+        changeOrder({
+          statusColumn,
+          newIndex: event.currentIndex,
+          currentIndex: event.previousIndex,
+        })
       );
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
+      const task = event.item.data;
+      const fromStatusColumn: StatusColumn = event.previousContainer
+        .id as StatusColumn;
+      const toStatusColumn: StatusColumn = event.container.id as StatusColumn;
+      console.log(fromStatusColumn, toStatusColumn);
+      this.store.dispatch(
+        transfer({
+          task,
+          fromStatusColumn,
+          toStatusColumn,
+          newIndex: event.currentIndex,
+        })
       );
     }
   }

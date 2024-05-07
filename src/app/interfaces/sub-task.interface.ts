@@ -1,4 +1,4 @@
 export interface SubTask {
   description: string;
-  isFinished: true;
+  isFinished: boolean;
 }

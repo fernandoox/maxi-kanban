@@ -1,7 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import { tasksMock } from '../../mocks/tasks';
+import {
+  updateSubTaskInArray,
+  updateTaskInArray,
+} from '../../utils/tasks.utils';
 import { TaskState } from './tasks-state.interface';
-import { add, changeOrder, transfer } from './tasks.actions';
+import { add, changeOrder, toggleSubTask, transfer } from './tasks.actions';
 
 const initialState: TaskState = tasksMock;
 
@@ -46,5 +50,12 @@ export const tasksReducer = createReducer(
       }
       return newState;
     }
-  )
+  ),
+  on(toggleSubTask, (state, { statusColumn, task, subTask, isFinished }) => {
+    const updatedTasks = updateTaskInArray(state[statusColumn], {
+      ...task,
+      subTasks: updateSubTaskInArray(task.subTasks, { ...subTask, isFinished }),
+    });
+    return { ...state, [statusColumn]: updatedTasks };
+  })
 );

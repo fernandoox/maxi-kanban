@@ -1,4 +1,4 @@
-<div cdkDropListGroup>
+<div cdkDropListGroup class="dashboard">
   <div class="task-container">
     @if(todoTasks$ | async; as todoTasks){
     <app-title-column
@@ -14,8 +14,10 @@
     >
       @for (item of todoTasks; track item) {
       <div class="task-box" cdkDrag [cdkDragData]="item">
-        <app-task-item></app-task-item>
-        {{ item.title }}
+        <app-task-item
+          [task]="item"
+          [statusColumn]="todoTitle.title"
+        ></app-task-item>
       </div>
       }
     </div>
@@ -37,8 +39,10 @@
     >
       @for (item of doingTasks; track item) {
       <div class="task-box" cdkDrag [cdkDragData]="item">
-        <app-task-item></app-task-item>
-        {{ item.title }}
+        <app-task-item
+          [task]="item"
+          [statusColumn]="doingTitle.title"
+        ></app-task-item>
       </div>
       }
     </div>
@@ -60,8 +64,10 @@
     >
       @for (item of doneTasks; track item) {
       <div class="task-box" cdkDrag [cdkDragData]="item">
-        <app-task-item></app-task-item>
-        {{ item.title }}
+        <app-task-item
+          [task]="item"
+          [statusColumn]="doneTitle.title"
+        ></app-task-item>
       </div>
       }
     </div>

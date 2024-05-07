@@ -1,0 +1,19 @@
+<div class="task-details">
+  <h2>{{ data.task.title }}</h2>
+  <p>{{ data.task.description }}</p>
+  <div class="sub-tasks">
+    Subtasks ({{ doneSubTaks(data.task.subTasks) }} of
+    {{ data.task.subTasks.length }})
+    {{ data.statusColumn }}
+    <div *ngFor="let subTask of data.task.subTasks">
+      <label>
+        <input
+          type="checkbox"
+          [checked]="subTask.isFinished"
+          (change)="onSubTaskStatusChange($event, subTask)"
+        />
+        {{ subTask.description }}
+      </label>
+    </div>
+  </div>
+</div>

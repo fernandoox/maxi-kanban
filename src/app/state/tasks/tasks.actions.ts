@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { SubTask } from '../../interfaces/sub-task.interface';
 import { Task } from '../../interfaces/task.interface';
 import { StatusColumn } from '../../types/status-column.type';
 
@@ -23,5 +24,15 @@ export const transfer = createAction(
     fromStatusColumn: StatusColumn;
     toStatusColumn: StatusColumn;
     newIndex: number;
+  }>()
+);
+
+export const toggleSubTask = createAction(
+  '[TASK] Update Subtask',
+  props<{
+    statusColumn: StatusColumn;
+    task: Task;
+    subTask: SubTask;
+    isFinished: boolean;
   }>()
 );

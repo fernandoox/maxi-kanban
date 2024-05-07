@@ -1,5 +1,12 @@
-.kanban-icon {
-  color: #5a55b9;
-  transform: scale(1.5);
-  margin-right: 10px;
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  h1 {
+    font-size: 30px;
+  }
+  .kanban-icon {
+    color: #5a55b9;
+    transform: scale(1.8);
+    margin-right: 15px;
+  }
 }

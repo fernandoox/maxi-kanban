@@ -1,0 +1,82 @@
+<h2 mat-dialog-title>Add new task</h2>
+<section class="form-container">
+  <form [formGroup]="taskForm" (ngSubmit)="submitForm()">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title" />
+      <mat-error
+        *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+      >
+        Title is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="Description"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+
+    <div formArrayName="subTasks" class="sub-tasks-container">
+      <div
+        *ngFor="let subTask of subTasks.controls; let i = index"
+        [formGroupName]="i"
+        class="item-sub-task"
+      >
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Sub task description"
+            formControlName="description"
+          />
+          <mat-error
+            *ngIf="
+              subTask.get('description')?.invalid &&
+              subTask.get('description')?.touched
+            "
+          >
+            Sub task description is required.
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-icon-button color="warn" (click)="removeSubTask(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="addSubTask()"
+      >
+        Add sub task
+      </button>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let column of statusColumns" [value]="column">{{
+          column
+        }}</mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          taskForm.get('status')?.invalid && taskForm.get('status')?.touched
+        "
+      >
+        Status is required.
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="taskForm.invalid"
+    >
+      Add task
+    </button>
+  </form>
+</section>

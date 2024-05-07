@@ -1,1 +1,14 @@
-<p>task-item works!</p>
+<section class="task-card">
+  <h3>{{ task?.title }}</h3>
+  <p>
+    {{ task?.description }}
+  </p>
+  <div class="button-container">
+    <button mat-icon-button (click)="openDialog()">
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</section>

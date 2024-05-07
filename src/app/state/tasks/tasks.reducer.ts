@@ -30,13 +30,19 @@ export const tasksReducer = createReducer(
       const newState = { ...state };
       const taskIndex = newState[fromStatusColumn].findIndex((t) => t === task);
       if (taskIndex !== -1) {
-        const originTasks = [...newState[fromStatusColumn]]; // Creamos una copia del array original
-        originTasks.splice(taskIndex, 1); // Modificamos la copia en lugar del array original
-        newState[fromStatusColumn] = originTasks; // Asignamos la copia modificada al estado
+        // Create a copy of the original array of tasks
+        const originTasks = [...newState[fromStatusColumn]];
+        // Remove the task from its current position
+        originTasks.splice(taskIndex, 1);
+        // Update the source column with the modified copy
+        newState[fromStatusColumn] = originTasks;
 
-        const destinationTasks = [...newState[toStatusColumn]]; // Creamos una copia del array de destino
-        destinationTasks.splice(newIndex, 0, task); // Modificamos la copia del array de destino
-        newState[toStatusColumn] = destinationTasks; // Asignamos la copia modificada al estado
+        // Create a copy of the destination column array
+        const destinationTasks = [...newState[toStatusColumn]];
+        // Insert the task at the new position in the destination column
+        destinationTasks.splice(newIndex, 0, task);
+        // Update the destination column with the modified copy
+        newState[toStatusColumn] = destinationTasks;
       }
       return newState;
     }

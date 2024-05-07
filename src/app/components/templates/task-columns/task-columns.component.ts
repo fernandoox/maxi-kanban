@@ -42,27 +42,29 @@ export class TaskColumnsComponent {
   }
 
   drop(event: CdkDragDrop<Task[]>) {
-    if (event.previousContainer === event.container) {
-      const statusColumn: StatusColumn = event.container.id as StatusColumn;
+    const { previousContainer, container, currentIndex, previousIndex } = event;
+
+    if (previousContainer === container) {
+      const statusColumn: StatusColumn = container.id as StatusColumn;
       this.store.dispatch(
         changeOrder({
           statusColumn,
-          newIndex: event.currentIndex,
-          currentIndex: event.previousIndex,
+          newIndex: currentIndex,
+          currentIndex: previousIndex,
         })
       );
     } else {
       const task = event.item.data;
-      const fromStatusColumn: StatusColumn = event.previousContainer
-        .id as StatusColumn;
-      const toStatusColumn: StatusColumn = event.container.id as StatusColumn;
-      console.log(fromStatusColumn, toStatusColumn);
+      const fromStatusColumn: StatusColumn =
+        previousContainer.id as StatusColumn;
+      const toStatusColumn: StatusColumn = container.id as StatusColumn;
+
       this.store.dispatch(
         transfer({
           task,
           fromStatusColumn,
           toStatusColumn,
-          newIndex: event.currentIndex,
+          newIndex: currentIndex,
         })
       );
     }

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideMockStore } from '@ngrx/store/testing';
 import { TaskColumnsComponent } from './task-columns.component';
 
 describe('TaskColumnsComponent', () => {
@@ -8,10 +9,10 @@ describe('TaskColumnsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TaskColumnsComponent]
-    })
-    .compileComponents();
-    
+      declarations: [TaskColumnsComponent],
+      providers: [provideMockStore({})],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(TaskColumnsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

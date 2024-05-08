@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarTitleComponent } from './toolbar-title.component';
 
 describe('ToolbarTitleComponent', () => {
@@ -8,10 +9,10 @@ describe('ToolbarTitleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ToolbarTitleComponent]
-    })
-    .compileComponents();
-    
+      imports: [MatIconModule, MatToolbarModule],
+      declarations: [ToolbarTitleComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ToolbarTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

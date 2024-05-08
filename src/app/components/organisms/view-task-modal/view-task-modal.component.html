@@ -1,19 +1,24 @@
 <div class="task-details">
-  <h2>{{ data.task.title }}</h2>
+  <h3>{{ data.task.title }}</h3>
   <p>{{ data.task.description }}</p>
   <div class="sub-tasks">
-    Subtasks ({{ doneSubTaks(data.task.subTasks) }} of
-    {{ data.task.subTasks.length }})
-    {{ data.statusColumn }}
-    <div *ngFor="let subTask of data.task.subTasks">
-      <label>
-        <input
-          type="checkbox"
-          [checked]="subTask.isFinished"
-          (change)="onSubTaskStatusChange($event, subTask)"
-        />
-        {{ subTask.description }}
-      </label>
+    <span class="counter-tasks">
+      Subtasks ({{ doneSubTaks(subTasks || []) }} of {{ subTasks?.length }})
+    </span>
+    <div *ngFor="let subTask of subTasks">
+      <mat-checkbox
+        color="primary"
+        [checked]="subTask.isFinished"
+        (change)="onSubTaskStatusChange($event.checked, subTask)"
+      >
+        <span [appStrikethrough]="subTask">{{ subTask.description }}</span>
+      </mat-checkbox>
     </div>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <select matNativeControl disabled>
+        <option [selected]="true">{{ data.statusColumn }}</option>
+      </select>
+    </mat-form-field>
   </div>
 </div>

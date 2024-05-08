@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CdkDrag, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,10 +27,11 @@ import { NavListComponent } from './components/molecules/nav-list/nav-list.compo
 import { TaskItemComponent } from './components/molecules/task-item/task-item.component';
 import { AddTaskModalComponent } from './components/organisms/add-task-modal/add-task-modal.component';
 import { ToggleThemeComponent } from './components/organisms/toggle-theme/toggle-theme.component';
+import { ViewTaskModalComponent } from './components/organisms/view-task-modal/view-task-modal.component';
 import { MainLayoutComponent } from './components/pages/main-layout/main-layout.component';
 import { TaskColumnsComponent } from './components/templates/task-columns/task-columns.component';
 import { tasksReducer } from './state/tasks/tasks.reducer';
-import { ViewTaskModalComponent } from './components/organisms/view-task-modal/view-task-modal.component';
+import { StrikethroughDirective } from './directives/strikethrough.directive';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ViewTaskModalComponent } from './components/organisms/view-task-modal/v
     MainLayoutComponent,
     AddTaskModalComponent,
     ViewTaskModalComponent,
+    StrikethroughDirective,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ import { ViewTaskModalComponent } from './components/organisms/view-task-modal/v
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

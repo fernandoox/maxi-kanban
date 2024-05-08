@@ -21,8 +21,9 @@ export class TaskItemComponent {
         task: this.task,
         statusColumn: this.statusColumn,
       },
-      height: '600px',
+      height: 'auto',
       width: '500px',
+      autoFocus: false,
     });
   }
 }

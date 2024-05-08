@@ -1,12 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
+import { cloneDeep } from 'lodash-es';
 import { tasksMock } from '../../mocks/tasks';
-import {
-  updateSubTaskInArray,
-  updateTaskInArray,
-} from '../../utils/tasks.utils';
 import { TaskState } from './tasks-state.interface';
 import { add, changeOrder, toggleSubTask, transfer } from './tasks.actions';
-
 const initialState: TaskState = tasksMock;
 
 export const tasksReducer = createReducer(
@@ -52,10 +48,26 @@ export const tasksReducer = createReducer(
     }
   ),
   on(toggleSubTask, (state, { statusColumn, task, subTask, isFinished }) => {
-    const updatedTasks = updateTaskInArray(state[statusColumn], {
-      ...task,
-      subTasks: updateSubTaskInArray(task.subTasks, { ...subTask, isFinished }),
-    });
-    return { ...state, [statusColumn]: updatedTasks };
+    // Clone the state and the task object to maintain immutability
+    const newState = cloneDeep(state);
+    const updatedTask = newState[statusColumn].find(
+      (t) => t.uuid === task.uuid
+    );
+
+    // Check if the task exists in the status column
+    if (updatedTask) {
+      // Find the subtask to be updated
+      const updatedSubTaskIndex = updatedTask.subTasks.findIndex(
+        (st) => st.uuid === subTask.uuid
+      );
+
+      // Check if the subtask exists in the task
+      if (updatedSubTaskIndex !== -1) {
+        // Update the subtask
+        updatedTask.subTasks[updatedSubTaskIndex].isFinished = isFinished;
+      }
+    }
+
+    return newState;
   })
 );

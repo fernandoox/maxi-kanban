@@ -19,6 +19,16 @@ export const tasksMock: TaskState = {
           description: 'Subtask 2 for Task 1',
           isFinished: false,
         },
+        {
+          uuid: uuidv4(),
+          description: 'Subtask 3 for Task 1',
+          isFinished: false,
+        },
+        {
+          uuid: uuidv4(),
+          description: 'Subtask 4 for Task 1',
+          isFinished: false,
+        },
       ],
     },
     {

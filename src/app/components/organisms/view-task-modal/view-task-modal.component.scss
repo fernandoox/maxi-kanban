@@ -1,0 +1,25 @@
+.task-details {
+  display: flex;
+  padding: 5px 20px;
+  flex-direction: column;
+  h3 {
+    font-weight: 400;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+  }
+  p {
+    color: gray;
+    margin-bottom: 0px;
+  }
+  .sub-tasks {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    mat-form-field {
+      margin-top: 20px;
+    }
+    .counter-tasks {
+      font-weight: 500px;
+    }
+  }
+}

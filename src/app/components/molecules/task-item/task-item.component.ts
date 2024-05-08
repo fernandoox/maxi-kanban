@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SubTask } from '../../../interfaces/sub-task.interface';
 import { Task } from '../../../interfaces/task.interface';
 import { StatusColumn } from '../../../types/status-column.type';
 import { ViewTaskModalComponent } from '../../organisms/view-task-modal/view-task-modal.component';
@@ -25,5 +26,9 @@ export class TaskItemComponent {
       width: '500px',
       autoFocus: false,
     });
+  }
+
+  doneSubTaks(subTasks: SubTask[]) {
+    return subTasks.filter((sb) => sb.isFinished).length;
   }
 }

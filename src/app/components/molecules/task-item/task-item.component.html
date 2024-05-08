@@ -3,6 +3,10 @@
   <p>
     {{ task?.description }}
   </p>
+  <span>
+    {{ doneSubTaks(task?.subTasks || []) }} of
+    {{ task?.subTasks?.length }} subtasks
+  </span>
   <div class="button-container">
     <button mat-icon-button (click)="openDialog()">
       <mat-icon>visibility</mat-icon>

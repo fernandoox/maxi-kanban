@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { storageSyncMetaReducer } from 'ngrx-store-persist';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddTaskButtonComponent } from './components/atoms/add-task-button/add-task-button.component';
@@ -32,6 +33,7 @@ import { MainLayoutComponent } from './components/pages/main-layout/main-layout.
 import { TaskColumnsComponent } from './components/templates/task-columns/task-columns.component';
 import { StrikethroughDirective } from './directives/strikethrough.directive';
 import { appReducers } from './state/ app.state';
+import { RestoreTasksButtonComponent } from './components/atoms/restore-tasks-button/restore-tasks-button.component';
 
 @NgModule({
   declarations: [
@@ -48,11 +50,14 @@ import { appReducers } from './state/ app.state';
     AddTaskModalComponent,
     ViewTaskModalComponent,
     StrikethroughDirective,
+    RestoreTasksButtonComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(appReducers),
+    StoreModule.forRoot(appReducers, {
+      metaReducers: [storageSyncMetaReducer],
+    }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatToolbarModule,
     MatButtonModule,

@@ -36,3 +36,5 @@ export const toggleSubTask = createAction(
     isFinished: boolean;
   }>()
 );
+
+export const restoreTasks = createAction('[TASK] Restore all tasks');

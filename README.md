@@ -10,13 +10,18 @@ This is a sample project of a Kanban board developed using Angular. This board a
 - **🕋 Data persistence**: NGRX and ngrx-store-persist are used to to persistently store tasks in the user's browser.
 - **🌙 Dark / Light mode**: Users can switch betweeen dark and light mode.
 
-### 📸 Screenshots
-
-TODO: Add screen shots
-
 ### 🌎 Live
 
-You can visit [fernandoox.github.io/maxi-kanban/](https://fernandoox.github.io/maxi-kanban/) to view the demo
+**You can visit [fernandoox.github.io/maxi-kanban/](https://fernandoox.github.io/maxi-kanban/) to view the demo**
+### 📸 Screenshots
+
+- App
+  ![image](https://github.com/fernandoox/maxi-kanban/assets/43055981/5a43a0cb-2dc6-43a5-b54a-ebeab2c5d23e)
+  ![image](https://github.com/fernandoox/maxi-kanban/assets/43055981/390f9205-f5d9-4474-80c3-a7f957973292)
+  ![image](https://github.com/fernandoox/maxi-kanban/assets/43055981/a79bf6de-f000-4f52-83ef-089eef82d1c6)
+
+- Unit Tests
+![image](https://github.com/fernandoox/maxi-kanban/assets/43055981/09f22ad2-1304-44f3-950c-0d4ac2b2078e)
 
 ### ⚙️ Installation
 

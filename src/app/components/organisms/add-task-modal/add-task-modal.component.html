@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add new task</h2>
+<h1 mat-dialog-title><strong>Add new task</strong></h1>
 <section class="form-container">
   <form [formGroup]="taskForm" (ngSubmit)="submitForm()">
     <mat-form-field>
@@ -44,12 +44,7 @@
           <mat-icon>close</mat-icon>
         </button>
       </div>
-      <button
-        mat-stroked-button
-        color="primary"
-        type="button"
-        (click)="addSubTask()"
-      >
+      <button mat-raised-button type="button" (click)="addSubTask()">
         Add sub task
       </button>
     </div>

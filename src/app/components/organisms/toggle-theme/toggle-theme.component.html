@@ -1,5 +1,11 @@
 <div class="toggle-theme-container">
-  <app-theme-icon></app-theme-icon>
-  <div>Switch</div>
-  <app-theme-icon></app-theme-icon>
+  <mat-icon style="color: #221f34">brightness_3</mat-icon>
+
+  <mat-slide-toggle
+    (change)="toggleTheme($event.checked)"
+    [checked]="isLightTheme$ | async"
+    color="primary"
+  >
+  </mat-slide-toggle>
+  <mat-icon style="color: #ffd700">wb_sunny</mat-icon>
 </div>

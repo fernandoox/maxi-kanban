@@ -1,5 +1,4 @@
 .task-card {
-  background-color: #fff;
   border-radius: 4px;
 
   width: 100%;
@@ -15,7 +14,7 @@
     margin-bottom: 5px;
     margin-top: 0px;
     overflow: hidden;
-    white-space: nowrap; /* Don't forget this one */
+    white-space: nowrap;
     text-overflow: ellipsis;
     width: 90%;
   }

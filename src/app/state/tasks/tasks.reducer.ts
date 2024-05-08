@@ -3,7 +3,9 @@ import { cloneDeep } from 'lodash-es';
 import { tasksMock } from '../../mocks/tasks';
 import { TaskState } from './tasks-state.interface';
 import { add, changeOrder, toggleSubTask, transfer } from './tasks.actions';
-const initialState: TaskState = tasksMock;
+
+export type State = TaskState;
+const initialState: State = tasksMock;
 
 export const tasksReducer = createReducer(
   initialState,
